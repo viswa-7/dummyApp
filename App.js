@@ -14,15 +14,16 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CartScreen from './Screens/CartScreen';
-import CartPageDemo from './CartPageDemo';
+// import CartPageDemo from './CartPageDemo';
 import { Provider } from 'react-redux';
-import { CartProvider } from './context/CartContext';
+// import { CartProvider } from './context/CartContext';
 const Stack = createNativeStackNavigator();
-
-const App = () => {
+import GlobalState from './context/GlobalState';
+import { VideoUploading } from './Screens/VideoUploading';
+const App = (props) => {
   return (
     
-    <CartProvider>
+    <GlobalState>
     <NavigationContainer >
 
       <Stack.Navigator initialRouteName="RestaurantScreen">
@@ -40,15 +41,16 @@ const App = () => {
           name="CartScreen"
         component={CartScreen} />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           options={{
             headerShown: false
           }}
-          name="CartPageDemo"
-          component={CartPageDemo} />
+            name="VideoUploading"
+          component={VideoUploading} /> */}
       </Stack.Navigator>
+
       </NavigationContainer>
-    </CartProvider>
+    </GlobalState>
   )
 }
 export default App;
